@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudentApp">
         <activity
+            android:name=".AlmaMenu"
+            android:exported="false" />
+        <activity
+            android:name=".Fakbar"
+            android:exported="false" />
+        <activity
+            android:name=".Alma"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -14,7 +14,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     public void onAlmaKnop(View caller){
-        Intent intent = new intent(this,Alma.class);
+        Intent intent = new Intent(this,Alma.class);
+        startActivity(intent);
+    }
+
+    public void OnBtnFakbar(View caller){
+        Intent intent = new Intent(this,Fakbar.class);
+        startActivity(intent);
+    }
+    public void onBtnAlmaMenu(View caller){
+        Intent intent = new Intent(this,AlmaMenu.class);
+        startActivity(intent);
     }
 
 }
