@@ -2,7 +2,9 @@ package com.example.studentapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,5 +13,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    public void
+    public void onAlmaKnop(View caller){
+        Intent intent = new intent(this,Alma.class);
+    }
+
 }
