@@ -50,6 +50,7 @@ public class AlmaMenu extends AppCompatActivity {
 
         //headers 1
         // Table Headers
+        //warme gerechten per dag
         TextView tv0 = new TextView( this);
         tv0.setText("Warme gerechten");
         tv0.setTextColor (Color.BLACK);
@@ -62,37 +63,105 @@ public class AlmaMenu extends AppCompatActivity {
         tbr0.addView(tv1);
         stk.addView(tbr0);
 
-        Log.d("food of the day:", String.valueOf(jsa));
-        int id = getDayOfWeek();
         try {
-            JSONObject foodOfTheDay = jsa.getJSONObject(1);
-            TableRow tbr = new TableRow(this);
-            TextView tv2 = new TextView(this);
-            //tv2.setText(foodOfTheDay.getString("gerecht"));
-            tv2.setTextColor(Color.BLACK);
-            tv2.setGravity(Gravity.CENTER);
-            //tbr.addView(tv2);
-
-            TextView tv3 = new TextView(this);
-            //tv3.setText(foodOfTheDay.getString("price"));
-            tv3.setTextColor(Color.BLACK);
-            tv3.setGravity(Gravity.CENTER);
-            //tbr.addView(tv3);
-            stk.addView(tbr);
-
-            //Log.d("food", String.valueOf(foodOfTheDay));
+            for(int i=0; i<jsa.length();i++){
+                JSONObject foodItem = jsa.getJSONObject(i);
+                if(String.valueOf(foodItem.get("Type")).equals("w")){
+                    Log.d("f", String.valueOf(foodItem));
+                    TableRow tbr = new TableRow(this);
+                    TextView tv2 = new TextView(this);
+                    tv2.setText(String.valueOf(foodItem.get("gerecht")));
+                    tv2.setTextColor(Color.BLACK);
+                    tv2.setGravity(Gravity.CENTER);
+                    tbr.addView(tv2);
+                    TextView tv3 = new TextView(this);
+                    tv3.setText(String.valueOf(foodItem.get("price")));
+                    tv3.setTextColor(Color.BLACK);
+                    tv3.setGravity(Gravity.CENTER);
+                    tbr.addView(tv3);
+                    stk.addView(tbr);
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //adding rows
 
+        //Veggie gerechten
+        TableRow tbr = new TableRow(this);
+        TextView tv2 = new TextView(this);
+        tv2.setText("Veggie gerecht");
+        tv2.setTextColor(Color.BLACK);
+        tv2.setBackgroundColor(Color.GRAY);
+        tv2.setGravity(Gravity.CENTER);
+        tbr.addView(tv2);
+        TextView tv3 = new TextView(this);
+        tv3.setText("");
+        tv3.setTextColor(Color.BLACK);
+        tv3.setGravity(Gravity.CENTER);
+        tbr.addView(tv3);
+        stk.addView(tbr);
+        try {
+            for(int i=0; i<jsa.length();i++){
+                JSONObject foodItem = jsa.getJSONObject(i);
+                if(String.valueOf(foodItem.get("Type")).equals("v")){
+                    Log.d("f", String.valueOf(foodItem));
+                    TableRow tbr1 = new TableRow(this);
+                    TextView tv5 = new TextView(this);
+                    tv5.setText(String.valueOf(foodItem.get("gerecht")));
+                    tv5.setTextColor(Color.BLACK);
+                    tv5.setGravity(Gravity.CENTER);
+                    tbr1.addView(tv5);
+                    TextView tv6 = new TextView(this);
+                    tv6.setText(String.valueOf(foodItem.get("price")));
+                    tv6.setTextColor(Color.BLACK);
+                    tv6.setGravity(Gravity.CENTER);
+                    tbr1.addView(tv6);
+                    stk.addView(tbr1);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-
-
-
+        TableRow tbr3 = new TableRow(this);
+        TextView tv5 = new TextView(this);
+        tv5.setText("Soepjes");
+        tv5.setTextColor(Color.BLACK);
+        tv5.setBackgroundColor(Color.GRAY);
+        tv5.setGravity(Gravity.CENTER);
+        tbr3.addView(tv5);
+        TextView tv6 = new TextView(this);
+        tv6.setText("");
+        tv6.setTextColor(Color.BLACK);
+        tv6.setGravity(Gravity.CENTER);
+        tbr3.addView(tv6);
+        stk.addView(tbr3);
+        try {
+            for(int i=0; i<jsa.length();i++){
+                JSONObject foodItem = jsa.getJSONObject(i);
+                if(String.valueOf(foodItem.get("Type")).equals("s")){
+                    Log.d("f", String.valueOf(foodItem));
+                    TableRow tbr1 = new TableRow(this);
+                    TextView tv7 = new TextView(this);
+                    tv7.setText(String.valueOf(foodItem.get("gerecht")));
+                    tv7.setTextColor(Color.BLACK);
+                    tv7.setGravity(Gravity.CENTER);
+                    tbr1.addView(tv7);
+                    TextView tv8 = new TextView(this);
+                    tv8.setText(String.valueOf(foodItem.get("price")));
+                    tv8.setTextColor(Color.BLACK);
+                    tv8.setGravity(Gravity.CENTER);
+                    tbr1.addView(tv8);
+                    stk.addView(tbr1);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }
+
     public int getDayOfWeek(){
         int currentTime = Calendar.getInstance().getTime().getDay();
         Log.d("time",String.valueOf(currentTime));
@@ -101,7 +170,7 @@ public class AlmaMenu extends AppCompatActivity {
     public void getDatabaseData(){
         requestQueue = Volley.newRequestQueue(this);
         int id = getDayOfWeek();
-        String requestURL = "https://studev.groept.be/api/a21pt205/Getwarmemenu/"+id;
+        String requestURL = "https://studev.groept.be/api/a21pt205/getMenuType/"+id+"/";
 
         JsonArrayRequest sumitRequest = new JsonArrayRequest(Request.Method.GET, requestURL,null,
                 new Response.Listener<JSONArray>()
@@ -115,7 +184,6 @@ public class AlmaMenu extends AppCompatActivity {
                                 responseString +=curObject.getString("id")+"\n";
 
                             }
-
                             makeTable(response);
                         } catch (JSONException e) {
 
@@ -129,9 +197,9 @@ public class AlmaMenu extends AppCompatActivity {
                         Log.e("database",e.getMessage(),e);
                     }
                 }
-                );
+        );
 
         requestQueue.add(sumitRequest);
     }
 
-    }
+}
