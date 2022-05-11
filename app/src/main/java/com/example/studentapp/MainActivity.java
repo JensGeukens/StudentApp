@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
     public void onAlmaKnop(View caller){
         Intent intent = new Intent(this,Alma.class);
         startActivity(intent);

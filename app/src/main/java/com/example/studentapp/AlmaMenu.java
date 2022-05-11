@@ -2,6 +2,7 @@ package com.example.studentapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,23 +24,38 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AlmaMenu extends AppCompatActivity {
     private TableLayout mTableLayout;
     private RequestQueue requestQueue;
-
+    private TextView txtDay;
+    private int currentDay;
+    private Map<Integer,String> map =new HashMap<Integer, String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        map.put(1,"Monday");
+        map.put(2, "Tuesday");
+        map.put(3,"Wednesday");
+        map.put(4,"Thursday");
+        map.put(5,"Friday");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alma_menu);
         mTableLayout = (TableLayout) findViewById(R.id.tableMenu);
         mTableLayout.setStretchAllColumns(true);
-        getDatabaseData();
+        txtDay = (TextView) findViewById(R.id.txtDag);
+        currentDay = getDayOfWeek();
+        displayDay();
+        getDatabaseData(currentDay);
+
 
     }
 
@@ -47,11 +63,13 @@ public class AlmaMenu extends AppCompatActivity {
     public void makeTable(JSONArray jsa){
         TableLayout stk = (TableLayout) findViewById(R.id.tableMenu);
         TableRow tbr0 = new TableRow(this);
+        stk.removeAllViews();
 
         //headers 1
         // Table Headers
         //warme gerechten per dag
         TextView tv0 = new TextView( this);
+
         tv0.setText("Warme gerechten");
         tv0.setTextColor (Color.BLACK);
         tv0.setBackgroundColor(Color.GRAY);
@@ -75,7 +93,7 @@ public class AlmaMenu extends AppCompatActivity {
                     tv2.setGravity(Gravity.CENTER);
                     tbr.addView(tv2);
                     TextView tv3 = new TextView(this);
-                    tv3.setText(String.valueOf(foodItem.get("price")));
+                    tv3.setText(String.valueOf(foodItem.get("price"))+" euro");
                     tv3.setTextColor(Color.BLACK);
                     tv3.setGravity(Gravity.CENTER);
                     tbr.addView(tv3);
@@ -112,7 +130,7 @@ public class AlmaMenu extends AppCompatActivity {
                     tv5.setGravity(Gravity.CENTER);
                     tbr1.addView(tv5);
                     TextView tv6 = new TextView(this);
-                    tv6.setText(String.valueOf(foodItem.get("price")));
+                    tv6.setText(String.valueOf(foodItem.get("price"))+" euro");
                     tv6.setTextColor(Color.BLACK);
                     tv6.setGravity(Gravity.CENTER);
                     tbr1.addView(tv6);
@@ -148,7 +166,7 @@ public class AlmaMenu extends AppCompatActivity {
                     tv7.setGravity(Gravity.CENTER);
                     tbr1.addView(tv7);
                     TextView tv8 = new TextView(this);
-                    tv8.setText(String.valueOf(foodItem.get("price")));
+                    tv8.setText(String.valueOf(foodItem.get("price"))+" euro");
                     tv8.setTextColor(Color.BLACK);
                     tv8.setGravity(Gravity.CENTER);
                     tbr1.addView(tv8);
@@ -158,8 +176,6 @@ public class AlmaMenu extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 
     public int getDayOfWeek(){
@@ -167,16 +183,16 @@ public class AlmaMenu extends AppCompatActivity {
         Log.d("time",String.valueOf(currentTime));
         return currentTime;
     }
-    public void getDatabaseData(){
+    public void getDatabaseData(int day){
         requestQueue = Volley.newRequestQueue(this);
-        int id = getDayOfWeek();
-        String requestURL = "https://studev.groept.be/api/a21pt205/getMenuType/"+id+"/";
+        String requestURL = "https://studev.groept.be/api/a21pt205/getMenuType/"+day+"/";
 
         JsonArrayRequest sumitRequest = new JsonArrayRequest(Request.Method.GET, requestURL,null,
                 new Response.Listener<JSONArray>()
                 {
                     @Override
                     public void onResponse(JSONArray response) {
+
                         try{
                             String responseString = "";
                             for(int i=0; i<response.length();i++){
@@ -202,4 +218,33 @@ public class AlmaMenu extends AppCompatActivity {
         requestQueue.add(sumitRequest);
     }
 
+    public void displayDay(){
+        TextView tv =(TextView) findViewById(R.id.txtDag);
+        tv.setTextColor(Color.BLACK);
+        String day = map.get(currentDay);
+        Log.d("int", String.valueOf(currentDay));
+        Log.d("day ",day);
+        tv.setText(map.get(currentDay));
+
+    }
+
+    public void PressedBtnLinks(View caller){
+        if(currentDay>1){
+            currentDay -=1 ;
+            displayDay();
+            getDatabaseData(currentDay);
+        }
+
+    }
+    public void pressedBtnRechts(View caller){
+        if(currentDay<4){
+            currentDay+=1;
+            displayDay();
+            getDatabaseData(currentDay);
+        }
+    }
+    public void pressedBtnReturn(View caller){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
 }
