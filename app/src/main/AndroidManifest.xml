@@ -16,10 +16,22 @@
             android:name=".AlmaMenu"
             android:exported="false" />
         <activity
-            android:name=".Fakbar"
+            android:name=".Fakbars"
             android:exported="false" />
         <activity
             android:name=".Alma"
+            android:exported="false" />
+        <activity
+            android:name=".Dulci"
+            android:exported="false" />
+        <activity
+            android:name=".Politika"
+            android:exported="false" />
+        <activity
+            android:name=".Recup"
+            android:exported="false" />
+        <activity
+            android:name=".VRG"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
