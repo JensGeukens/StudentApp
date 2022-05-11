@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnBtnFakbar(View caller){
-        Intent intent = new Intent(this,Fakbar.class);
+        Intent intent = new Intent(this, Fakbars.class);
         startActivity(intent);
     }
     public void onBtnAlmaMenu(View caller){
