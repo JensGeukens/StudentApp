@@ -223,7 +223,7 @@ public class AlmaMenu extends AppCompatActivity {
         tv.setTextColor(Color.BLACK);
         String day = map.get(currentDay);
         Log.d("int", String.valueOf(currentDay));
-        Log.d("day ",day);
+
         tv.setText(map.get(currentDay));
 
     }
