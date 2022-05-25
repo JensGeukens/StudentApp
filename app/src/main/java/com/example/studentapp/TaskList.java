@@ -4,17 +4,34 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Date;
 
 public class TaskList extends AppCompatActivity implements View.OnClickListener {
 
     LinearLayout layouList;
     Button buttonAdd;
     Button btnSubmitList;
+    private RequestQueue requestQueue;
 
 
 
@@ -51,7 +68,56 @@ public class TaskList extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void addDataToDataBase() {
+        for(int i =0; i<layouList.getChildCount();i++){
 
+            View taskView = layouList.getChildAt(i);
+            EditText editTask = (EditText) taskView.findViewById(R.id.editTask);
+            EditText editTime = (EditText) taskView.findViewById(R.id.editTime);
+            DatePicker spinnerDate = (DatePicker) this.findViewById(R.id.spinnerDate);
+
+            String task = editTask.getText().toString();
+            String time = editTime.getText().toString();
+            String year = String.valueOf(spinnerDate.getYear());
+            String month = String.format("0%d",spinnerDate.getMonth());
+            String day = String.valueOf(spinnerDate.getDayOfMonth());
+            String date = year+month+day;
+
+            Log.d("data","task: "+task+", time: "+time+", date: "+date);
+
+            requestQueue = Volley.newRequestQueue(this);
+            String requestURL = "https://studev.groept.be/api/a21pt205/addTask/"+task+"/"+time+"/"+date;
+            Log.d("requestURL",requestURL);
+
+            JsonArrayRequest sumitRequest = new JsonArrayRequest(Request.Method.GET, requestURL,null,
+                    new Response.Listener<JSONArray>()
+                    {
+                        @Override
+                        public void onResponse(JSONArray response) {
+
+                            try{
+                                String responseString = "";
+                                for(int i=0; i<response.length();i++){
+                                    JSONObject curObject = response.getJSONObject(i);
+                                    responseString +=curObject.getString("id")+"\n";
+
+                                }
+
+                            } catch (JSONException e) {
+
+                                Log.e("Database",e.getMessage(),e);
+                            }
+                        }
+                    },
+                    new Response.ErrorListener(){
+                        @Override
+                        public void onErrorResponse(VolleyError e){
+                            Log.e("database",e.getMessage(),e);
+                        }
+                    }
+            );
+
+            requestQueue.add(sumitRequest);
+        }
     }
 
     private boolean checkIfValidAndRead() {
@@ -63,8 +129,8 @@ public class TaskList extends AppCompatActivity implements View.OnClickListener 
                 View taskView = layouList.getChildAt(i);
                 EditText editTask = (EditText) taskView.findViewById(R.id.editTask);
                 EditText editTime = (EditText) taskView.findViewById(R.id.editTime);
+                DatePicker SpinnerDate = (DatePicker) taskView.findViewById(R.id.spinnerDate);
 
-                editTime.getText().toString();
                 //set rules
             }
 
@@ -94,7 +160,6 @@ public class TaskList extends AppCompatActivity implements View.OnClickListener 
         layouList.removeView(v);
 
     }
-
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {

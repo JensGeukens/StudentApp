@@ -45,6 +45,7 @@
             android:background="@drawable/round_grey">
 
             <DatePicker
+                android:id="@+id/spinnerDate"
                 android:layout_width="250dp"
                 android:layout_height="200dp"
                 android:calendarViewShown="false"
