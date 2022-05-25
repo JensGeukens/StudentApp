@@ -9,13 +9,27 @@
 
     <EditText
         android:id="@+id/editTask"
-        android:hint="Task"
-        android:background="@drawable/round_grey"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+
+        android:layout_marginRight="5dp"
         android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_marginTop="75dp"
-        android:layout_marginRight="10dp"
-        android:layout_height="30dp"></EditText>
+        android:background="@drawable/round_grey"
+        android:hint="Task"
+        ></EditText>
+
+
+
+    <EditText
+        android:id="@+id/editTime"
+        android:hint="time (hh:mm)"
+        android:layout_width="105dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="1"
+        android:inputType="time"></EditText>
 
 
     <ImageView

@@ -17,11 +17,13 @@
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_add_tasks.xml" value="0.1" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_alma_menu.xml" value="0.11865942028985507" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_main.xml" value="0.11865942028985507" />
-        <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_main2.xml" value="0.1082427536231884" />
+        <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_main2.xml" value="0.1" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_task_list.xml" value="0.2" />
+        <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_toDo.xml" value="0.1693840579710145" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_todo.xml" value="0.11820652173913043" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/new_add_task.xml" value="0.2" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/row_add_task.xml" value="0.25" />
+        <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/row_task.xml" value="0.1693840579710145" />
       </map>
     </option>
   </component>

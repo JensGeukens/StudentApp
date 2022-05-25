@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">StudentApp</string>
+    <string name="task_list">To do </string>
+
 </resources>

@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onAlmaKnop(View caller){
-        Intent intent = new Intent(this,TaskList.class);
+        Intent intent = new Intent(this,TodoList.class);
         startActivity(intent);
     }
 

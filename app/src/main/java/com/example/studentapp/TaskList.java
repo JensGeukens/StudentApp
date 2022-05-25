@@ -2,22 +2,19 @@ package com.example.studentapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TimePicker;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class TaskList extends AppCompatActivity implements View.OnClickListener {
 
     LinearLayout layouList;
     Button buttonAdd;
+    Button btnSubmitList;
 
 
 
@@ -28,12 +25,50 @@ public class TaskList extends AppCompatActivity implements View.OnClickListener 
 
         layouList = findViewById(R.id.layoutList);
         buttonAdd = findViewById(R.id.buttonAddTask);
+        btnSubmitList = findViewById(R.id.BtnSubmit);
 
         buttonAdd.setOnClickListener(this);
     }
 
     public void onClick(View v){
-        addView();
+        switch(v.getId()){
+
+            case R.id.buttonAddTask:
+                addView();
+                break;
+
+            case R.id.BtnSubmit:
+
+                if(checkIfValidAndRead()){
+                    addDataToDataBase();
+                    Intent intent = new Intent(this,TodoList.class);
+                    startActivity(intent);
+                }
+
+
+                break;
+        }
+    }
+
+    private void addDataToDataBase() {
+
+    }
+
+    private boolean checkIfValidAndRead() {
+        boolean result = true;
+
+            //refactor
+            for(int i =0; i<layouList.getChildCount();i++){
+
+                View taskView = layouList.getChildAt(i);
+                EditText editTask = (EditText) taskView.findViewById(R.id.editTask);
+                EditText editTime = (EditText) taskView.findViewById(R.id.editTime);
+
+                editTime.getText().toString();
+                //set rules
+            }
+
+        return result;
     }
 
     private void addView(){
