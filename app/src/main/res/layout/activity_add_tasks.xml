@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/addtaskView"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TaskList">
+    tools:context=".todo.Activity_AddTasks">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -54,15 +55,23 @@
 
         <Button
             android:id="@+id/BtnSubmit"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="150dp"
             android:layout_marginTop="50dp"
             android:background="@drawable/round_primary"
             android:onClick="onClick"
             android:paddingLeft="10dp"
             android:paddingRight="15dp"
             android:text="Submit Tasks"
+            android:textAllCaps="false"></Button>
+        <Button
+            android:id="@+id/btnReturn"
+            android:text="Return"
+            android:background="@drawable/round_primary"
+            android:onClick="onClick"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
             android:textAllCaps="false"></Button>
 
 

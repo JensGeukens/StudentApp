@@ -1,10 +1,13 @@
-package com.example.studentapp;
+package com.example.studentapp.fakbar;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.studentapp.MainActivity;
+import com.example.studentapp.R;
 
 public class Fakbars extends AppCompatActivity {
 

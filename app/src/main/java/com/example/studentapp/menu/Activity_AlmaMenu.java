@@ -1,4 +1,4 @@
-package com.example.studentapp;
+package com.example.studentapp.menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +20,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.studentapp.MainActivity;
+import com.example.studentapp.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +35,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AlmaMenu extends AppCompatActivity {
+public class Activity_AlmaMenu extends AppCompatActivity {
     private TableLayout mTableLayout;
     private RequestQueue requestQueue;
     private TextView txtDay;
@@ -183,40 +185,6 @@ public class AlmaMenu extends AppCompatActivity {
         Log.d("time",String.valueOf(currentTime));
         return currentTime;
     }
-    public void getDatabaseData(int day){
-        requestQueue = Volley.newRequestQueue(this);
-        String requestURL = "https://studev.groept.be/api/a21pt205/getMenuType/"+day+"/";
-
-        JsonArrayRequest sumitRequest = new JsonArrayRequest(Request.Method.GET, requestURL,null,
-                new Response.Listener<JSONArray>()
-                {
-                    @Override
-                    public void onResponse(JSONArray response) {
-
-                        try{
-                            String responseString = "";
-                            for(int i=0; i<response.length();i++){
-                                JSONObject curObject = response.getJSONObject(i);
-                                responseString +=curObject.getString("id")+"\n";
-
-                            }
-                            makeTable(response);
-                        } catch (JSONException e) {
-
-                            Log.e("Database",e.getMessage(),e);
-                        }
-                    }
-                },
-                new Response.ErrorListener(){
-                    @Override
-                    public void onErrorResponse(VolleyError e){
-                        Log.e("database",e.getMessage(),e);
-                    }
-                }
-        );
-
-        requestQueue.add(sumitRequest);
-    }
 
     public void displayDay(){
         TextView tv =(TextView) findViewById(R.id.txtDag);
@@ -244,7 +212,41 @@ public class AlmaMenu extends AppCompatActivity {
         }
     }
     public void pressedBtnReturn(View caller){
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void getDatabaseData(int day){
+        requestQueue = Volley.newRequestQueue(this);
+        String requestURL = "https://studev.groept.be/api/a21pt205/getMenuType/"+day+"/";
+
+        JsonArrayRequest sumitRequest = new JsonArrayRequest(Request.Method.GET, requestURL,null,
+                new Response.Listener<JSONArray>()
+                {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        try{
+                            String responseString = "";
+                            for(int i=0; i<response.length();i++){
+                                JSONObject curObject = response.getJSONObject(i);
+                                responseString +=curObject.getString("id")+"\n";
+                            }
+                            makeTable(response);
+                        } catch (JSONException e) {
+
+                            Log.e("Database",e.getMessage(),e);
+                        }
+                    }
+                },
+                new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError e){
+                        Log.e("database",e.getMessage(),e);
+                    }
+                }
+        );
+
+        requestQueue.add(sumitRequest);
     }
 }

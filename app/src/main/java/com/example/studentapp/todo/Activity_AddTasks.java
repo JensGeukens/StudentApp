@@ -1,4 +1,4 @@
-package com.example.studentapp;
+package com.example.studentapp.todo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -19,26 +18,28 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.studentapp.R;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Date;
-
-public class TaskList extends AppCompatActivity implements View.OnClickListener {
+public class Activity_AddTasks extends AppCompatActivity implements View.OnClickListener {
 
     LinearLayout layouList;
     Button buttonAdd;
     Button btnSubmitList;
     private RequestQueue requestQueue;
-
+    private final int MAX_VIEWS  = 4;
+    private int currentNrViews = 1;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task_list);
+        setContentView(R.layout.activity_add_tasks);
 
         layouList = findViewById(R.id.layoutList);
         buttonAdd = findViewById(R.id.buttonAddTask);
@@ -51,19 +52,25 @@ public class TaskList extends AppCompatActivity implements View.OnClickListener 
         switch(v.getId()){
 
             case R.id.buttonAddTask:
-                addView();
+                if(currentNrViews<= MAX_VIEWS){
+                    currentNrViews+=1;
+                    addView();}
+                else{
+                    Snackbar timeSnackbar = Snackbar.make(v, "can't make more than 4 task at ones", BaseTransientBottomBar.LENGTH_LONG);
+                    timeSnackbar.show();
+                }
                 break;
 
             case R.id.BtnSubmit:
-
-                if(checkIfValidAndRead()){
+                if(checkIfValidAndRead(v)){
                     addDataToDataBase();
-                    Intent intent = new Intent(this,TodoList.class);
+                    Intent intent = new Intent(this, Activity_TodoList.class);
                     startActivity(intent);
                 }
-
-
                 break;
+            case R.id.btnReturn:
+                Intent intent =  new Intent(this, Activity_TodoList.class);
+                startActivity(intent);
         }
     }
 
@@ -120,25 +127,43 @@ public class TaskList extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
-    private boolean checkIfValidAndRead() {
-        boolean result = true;
-
+    private boolean checkIfValidAndRead(View v) {
             //refactor
-            for(int i =0; i<layouList.getChildCount();i++){
+        boolean result = true;
+        for(int i =0; i<layouList.getChildCount();i++) {
+            View taskView = layouList.getChildAt(i);
+            EditText editTask = (EditText) taskView.findViewById(R.id.editTask);
+            EditText editTime = (EditText) taskView.findViewById(R.id.editTime);
+            DatePicker SpinnerDate = (DatePicker) taskView.findViewById(R.id.spinnerDate);
 
-                View taskView = layouList.getChildAt(i);
-                EditText editTask = (EditText) taskView.findViewById(R.id.editTask);
-                EditText editTime = (EditText) taskView.findViewById(R.id.editTime);
-                DatePicker SpinnerDate = (DatePicker) taskView.findViewById(R.id.spinnerDate);
+            String data = editTask.getText().toString();
+            String time = editTime.getText().toString();
+            String date = editTime.getText().toString();
 
-                //set rules
+        Task task = new Task(data, time, date);
+        if (!task.checkValidTime()) {
+            Snackbar timeSnackbar = Snackbar.make(v, "Give valid time and Date", BaseTransientBottomBar.LENGTH_LONG);
+            timeSnackbar.show();
+            return false;
+        }
+        if(!task.checkValidDate()) {
+            Snackbar dateSnackbar = Snackbar.make(v, "Give valid date of todday", BaseTransientBottomBar.LENGTH_LONG);
+            dateSnackbar.show();
+            return false;
+        }
+        if (!task.checkValidData()) {
+            Snackbar mySnackbar = Snackbar.make(v, "Can't summit empty task", BaseTransientBottomBar.LENGTH_LONG);
+            mySnackbar.show();
+            return false;
             }
-
-        return result;
+        else{
+            return result;
+        }
+    }
+    return result;
     }
 
     private void addView(){
-
         View taskView = getLayoutInflater().inflate(R.layout.new_add_task,null,false);
 
         EditText editText = (EditText)taskView.findViewById(R.id.editTask);
@@ -150,15 +175,12 @@ public class TaskList extends AppCompatActivity implements View.OnClickListener 
                 removeView(taskView);
             }
         });
-
         layouList.addView(taskView);
-
     }
 
     private void removeView(View v){
-
         layouList.removeView(v);
-
+        currentNrViews-=1;
     }
 
     @Override
