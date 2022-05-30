@@ -18,18 +18,13 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -244,7 +239,7 @@ public class AlmaMenu extends AppCompatActivity {
         }
     }
     public void pressedBtnReturn(View caller){
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, QrScanner.class);
         startActivity(intent);
     }
 }

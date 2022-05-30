@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,5 +28,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,AlmaMenu.class);
         startActivity(intent);
     }
-
+    public void onBtnLogOut(View caller){
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+    }
 }
