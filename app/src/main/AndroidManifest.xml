@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.studentapp">
-
     <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,29 +9,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StudentApp">
+
+
+
         <activity
-            android:name=".todo.Activity_AddTasks"
+            android:name=".AlmaMenu"
             android:exported="false" />
         <activity
-            android:name=".menu.Activity_AlmaMenu"
+            android:name=".Fakbars"
             android:exported="false" />
         <activity
-            android:name=".fakbar.Fakbars"
+            android:name=".Alma"
             android:exported="false" />
         <activity
-            android:name=".todo.Activity_TodoList"
+            android:name=".Dulci"
             android:exported="false" />
         <activity
-            android:name=".fakbar.Dulci"
+            android:name=".Politika"
             android:exported="false" />
         <activity
-            android:name=".fakbar.Politika"
+            android:name=".Recup"
             android:exported="false" />
         <activity
-            android:name=".fakbar.Recup"
-            android:exported="false" />
-        <activity
-            android:name=".fakbar.VRG"
+            android:name=".VRG"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

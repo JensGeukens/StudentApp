@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,6 +25,8 @@ import org.json.JSONObject;
 public class Recup extends AppCompatActivity {
     private RequestQueue requestQueue;
     private int progress;
+    private String text;
+    private String date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +50,7 @@ public class Recup extends AppCompatActivity {
                             JSONObject curObject = response.getJSONObject(0);
                             progress = curObject.getInt("count");
                             Log.d("rere", String.valueOf(progress));
-                            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+                            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar4);
                             progressBar.setMax(10);
                             progressBar.setProgress(progress);
                     } catch (JSONException e) {
@@ -72,7 +75,53 @@ public class Recup extends AppCompatActivity {
 
     }
 
+    public void getDatabaseEvents() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        String requestURL = "https://studev.groept.be/api/a21pt205/get_events/" + 1 + "/";
 
+        JsonArrayRequest submitRequest = new JsonArrayRequest(Request.Method.GET, requestURL, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d("re", String.valueOf(response));
+                        try {
+                            TextView event = (TextView) findViewById(R.id.textView);
+                            if(response.length() == 0){
+                                event.setText("no events planned");
+                            }
+
+                            for (int i = 0; i < response.length(); i++) {
+
+                                JSONObject curObject = response.getJSONObject(i);
+                                text = curObject.getString("event");
+                                date = curObject.getString("date");
+                                Log.d("rere", date);
+                                event.append("Event:  " + text + "    Date:  " + date + "\n"+ "\n");
+                            }
+
+                        } catch (JSONException e) {
+
+                            Log.e("Database", e.getMessage(), e);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError e) {
+                        Log.e("database", e.getMessage(), e);
+                    }
+                }
+        );
+        requestQueue.add(submitRequest);
+    }
+
+
+
+    public void onBtEvents(View caller) {
+
+        this.getDatabaseEvents();
+
+    }
 }
 
 

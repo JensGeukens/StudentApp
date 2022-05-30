@@ -3,11 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jensg/.gradle/caches/transforms-3/5e94fd7f65488faeb74f5fdf5d892585/transformed/zxing-android-embedded-4.3.0/res/layout/zxing_capture.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/jensg/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_alma_menu.xml" value="0.358695652173913" />
         <entry key="..\:/Users/jensg/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_fakbar.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/jensg/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/jensg/AndroidStudioProjects/StudentApp/app/src/main/res/layout/dulci.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/jensg/AndroidStudioProjects/StudentApp/app/src/main/res/layout/fakbars.xml" value="0.2" />
+        <entry key="..\:/Users/jensg/AndroidStudioProjects/StudentApp/app/src/main/res/layout/login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/jensg/AndroidStudioProjects/StudentApp/app/src/main/res/layout/politika.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/jensg/AndroidStudioProjects/StudentApp/app/src/main/res/layout/qrscanner.xml" value="0.1" />
         <entry key="..\:/Users/jensg/AndroidStudioProjects/StudentApp/app/src/main/res/layout/vrg.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/drawable/ic_close.xml" value="0.1" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/drawable/round_grey.xml" value="0.1" />

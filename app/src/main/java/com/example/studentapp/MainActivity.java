@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.example.studentapp.fakbar.Fakbars;
@@ -31,5 +32,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Activity_AlmaMenu.class);
         startActivity(intent);
     }
-
+    public void onBtnLogOut(View caller){
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+    }
 }
