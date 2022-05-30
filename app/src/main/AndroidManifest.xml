@@ -13,13 +13,16 @@
 
 
         <activity
-            android:name=".AlmaMenu"
+            android:name=".menu.Activity_AlmaMenu"
             android:exported="false" />
         <activity
-            android:name=".Fakbars"
+            android:name=".fakbar.Fakbars"
             android:exported="false" />
         <activity
-            android:name=".Alma"
+            android:name=".todo.Activity_AddTasks"
+            android:exported="false" />
+        <activity
+            android:name=".todo.Activity_TodoList"
             android:exported="false" />
         <activity
             android:name=".Dulci"
@@ -28,11 +31,18 @@
             android:name=".Politika"
             android:exported="false" />
         <activity
-            android:name=".Recup"
+            android:name=".fakbar.Recup"
             android:exported="false" />
         <activity
             android:name=".VRG"
             android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".QrScanner"
+            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
