@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.studentapp.fakbar.Fakbars;
+import com.example.studentapp.menu.Activity_AlmaMenu;
+import com.example.studentapp.todo.Activity_TodoList;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onAlmaKnop(View caller){
-        Intent intent = new Intent(this,TodoList.class);
+        Intent intent = new Intent(this, Activity_TodoList.class);
         startActivity(intent);
     }
 
@@ -24,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void onBtnAlmaMenu(View caller){
-        Intent intent = new Intent(this,AlmaMenu.class);
+        Intent intent = new Intent(this, Activity_AlmaMenu.class);
         startActivity(intent);
     }
 
