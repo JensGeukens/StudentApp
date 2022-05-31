@@ -1,12 +1,14 @@
 package com.example.studentapp.fakbar;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -21,17 +23,58 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 
 public class Recup extends AppCompatActivity {
     private RequestQueue requestQueue;
     private int progress;
     private String text;
     private String date;
+    public Fakbar Recup;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fakbar);
+        Recup = new Fakbar("Recup",this);
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void onClick(View v){
+        switch(v.getId()){
+
+            case R.id.btnProgress:
+                int progress = Recup.getProgress();
+                setViewsProgress(progress);
+                break;
+            case R.id.btnEvents:
+                ArrayList<String[]> events= Recup.getEvents();
+                setViewEvents(events);
+                break;
+            case R.id.btnReturn:
+                Recup.returnBack();
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void setViewEvents(ArrayList<String[]> events) {
+        Log.d("event", String.valueOf(events));
+        TextView event = (TextView) findViewById(R.id.textView);
+        events.stream()
+                .forEach(str-> event.append("Event:  " + str[0] + "    Date:  " + str[1] + "\n"+ "\n"));
+    }
+
+    private void setViewsProgress(int progress) {
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setMax(10);
+        progressBar.setProgress(progress);
+    }
+}
+
+
+    /*
     public void onBtReturn(View caller) {
         Intent intent = new Intent(this, Fakbars.class);
         startActivity(intent);
@@ -91,7 +134,6 @@ public class Recup extends AppCompatActivity {
                             }
 
                             for (int i = 0; i < response.length(); i++) {
-
                                 JSONObject curObject = response.getJSONObject(i);
                                 text = curObject.getString("event");
                                 date = curObject.getString("date");
@@ -123,5 +165,6 @@ public class Recup extends AppCompatActivity {
 
     }
 }
+*/
 
 

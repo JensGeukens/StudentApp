@@ -25,7 +25,7 @@
             android:name=".todo.Activity_TodoList"
             android:exported="false" />
         <activity
-            android:name=".Dulci"
+            android:name=".fakbar.Dulci"
             android:exported="false" />
         <activity
             android:name=".Politika"

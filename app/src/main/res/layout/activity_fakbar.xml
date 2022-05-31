@@ -7,7 +7,7 @@
     tools:context=".fakbar.Recup">
 
     <ProgressBar
-        android:id="@+id/progressBar4"
+        android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="234dp"
         android:layout_height="44dp"
@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        app:layout_constraintTop_toBottomOf="@+id/btnProgress" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -33,11 +33,11 @@
         app:srcCompat="@drawable/download" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnReturn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:onClick="onBtReturn"
+        android:onClick="onClick"
         android:text="RETURN"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,11 +52,11 @@
         app:layout_constraintGuide_begin="201dp" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btnProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:onClick="onBtProgress"
+        android:onClick="onClick"
         android:text="check progress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -64,13 +64,13 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/btnEvents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:onClick="onBtEvents"
+        android:onClick="onClick"
         android:text="check events"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/btnReturn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />

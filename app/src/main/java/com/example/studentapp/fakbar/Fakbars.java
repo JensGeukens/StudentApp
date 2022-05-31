@@ -6,12 +6,11 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.studentapp.Dulci;
 import com.example.studentapp.MainActivity;
-import com.example.studentapp.Politika;
+import com.example.studentapp.fakbar.Politika;
 import com.example.studentapp.QrScanner;
 import com.example.studentapp.R;
-import com.example.studentapp.VRG;
+import com.example.studentapp.fakbar.VRG;
 
 public class Fakbars extends AppCompatActivity {
 
