@@ -18,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.studentapp.R;
+import com.example.studentapp.fakbar.Fakbars;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,36 +26,33 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-
-public class Recup extends AppCompatActivity {
+public class activity_Politika extends AppCompatActivity {
     private RequestQueue requestQueue;
     private int progress;
     private String text;
     private String date;
-    public Fakbar Recup;
-
+    public Fakbar Politika;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fakbar);
-        Recup = new Fakbar("Recup",this);
+        setContentView(R.layout.politika);
+        Politika = new Fakbar("Politika",this);
     }
-
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void onClick(View v){
         switch(v.getId()){
 
             case R.id.btnProgress:
-                int progress = Recup.getProgress();
+                int progress = Politika.getProgress();
                 setViewsProgress(progress);
                 break;
             case R.id.btnEvents:
-                ArrayList<String[]> events= Recup.getEvents();
+                ArrayList<String[]> events= Politika.getEvents();
                 setViewEvents(events);
                 break;
             case R.id.btnReturn:
-                Recup.returnBack();
+                Politika.returnBack();
         }
     }
 
@@ -74,15 +72,15 @@ public class Recup extends AppCompatActivity {
 }
 
 
+
     /*
     public void onBtReturn(View caller) {
         Intent intent = new Intent(this, Fakbars.class);
         startActivity(intent);
     }
-
     public void getDatabaseData() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String requestURL = "https://studev.groept.be/api/a21pt205/count_info/" + 1 + "/";
+        String requestURL = "https://studev.groept.be/api/a21pt205/count_info/" + 4 + "/";
 
         JsonArrayRequest sumitRequest = new JsonArrayRequest(Request.Method.GET, requestURL, null,
                 new Response.Listener<JSONArray>() {
@@ -96,7 +94,7 @@ public class Recup extends AppCompatActivity {
                             ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar4);
                             progressBar.setMax(10);
                             progressBar.setProgress(progress);
-                    } catch (JSONException e) {
+                        } catch (JSONException e) {
 
                             Log.e("Database", e.getMessage(), e);
                         }
@@ -120,7 +118,7 @@ public class Recup extends AppCompatActivity {
 
     public void getDatabaseEvents() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String requestURL = "https://studev.groept.be/api/a21pt205/get_events/" + 1 + "/";
+        String requestURL = "https://studev.groept.be/api/a21pt205/get_events/" + 4 + "/";
 
         JsonArrayRequest submitRequest = new JsonArrayRequest(Request.Method.GET, requestURL, null,
                 new Response.Listener<JSONArray>() {
@@ -128,17 +126,19 @@ public class Recup extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
                         Log.d("re", String.valueOf(response));
                         try {
-                            TextView event = (TextView) findViewById(R.id.textView);
+                            TextView event = (TextView) findViewById(R.id.textView4);
                             if(response.length() == 0){
                                 event.setText("no events planned");
                             }
-
+                            else{
                             for (int i = 0; i < response.length(); i++) {
-                                JSONObject curObject = response.getJSONObject(i);
-                                text = curObject.getString("event");
-                                date = curObject.getString("date");
-                                Log.d("rere", date);
-                                event.append("Event:  " + text + "    Date:  " + date + "\n"+ "\n");
+                                    JSONObject curObject = response.getJSONObject(i);
+
+                                    text = curObject.getString("event");
+                                    date = curObject.getString("date");
+                                    Log.d("rere", date);
+                                    event.append("Event:  " + text + "    Date:  " + date + "\n" + "\n");
+                                }
                             }
 
                         } catch (JSONException e) {
@@ -165,6 +165,5 @@ public class Recup extends AppCompatActivity {
 
     }
 }
-*/
 
-
+     */

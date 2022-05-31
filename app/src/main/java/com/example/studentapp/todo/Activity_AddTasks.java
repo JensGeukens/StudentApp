@@ -86,13 +86,13 @@ public class Activity_AddTasks extends AppCompatActivity implements View.OnClick
             String time = editTime.getText().toString();
             String year = String.valueOf(spinnerDate.getYear());
             String month = String.format("0%d",spinnerDate.getMonth());
-            String day = String.valueOf(spinnerDate.getDayOfMonth());
+            String day = String.format("0%d", spinnerDate.getDayOfMonth());
             String date = year+month+day;
 
             Log.d("data","task: "+task+", time: "+time+", date: "+date);
 
             requestQueue = Volley.newRequestQueue(this);
-            String requestURL = "https://studev.groept.be/api/a21pt205/addTask/"+task+"/"+time+"/"+date;
+            String requestURL = String.format("https://studev.groept.be/api/a21pt205/addTask/%s/%s/"+date,task,time);
             Log.d("requestURL",requestURL);
 
             JsonArrayRequest sumitRequest = new JsonArrayRequest(Request.Method.GET, requestURL,null,
@@ -105,7 +105,9 @@ public class Activity_AddTasks extends AppCompatActivity implements View.OnClick
                                 String responseString = "";
                                 for(int i=0; i<response.length();i++){
                                     JSONObject curObject = response.getJSONObject(i);
-                                    responseString +=curObject.getString("id")+"\n";
+
+                                    responseString += curObject.getString("id")+"\n";
+
 
                                 }
 

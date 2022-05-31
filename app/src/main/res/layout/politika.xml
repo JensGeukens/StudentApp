@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fakbar.Recup">
+        tools:context=".fakbar.activity_Recup">
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -20,7 +20,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/brnProgress" />
+            app:layout_constraintTop_toBottomOf="@+id/btnProgress" />
 
         <Button
             android:id="@+id/btnReturn"
@@ -53,7 +53,7 @@
             app:srcCompat="@drawable/unnamed" />
 
         <Button
-            android:id="@+id/brnProgress"
+            android:id="@+id/btnProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"

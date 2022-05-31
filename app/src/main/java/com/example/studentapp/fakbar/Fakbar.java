@@ -12,6 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.studentapp.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -81,7 +82,8 @@ public class Fakbar extends AppCompatActivity {
 
     public int getProgress() {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
-        String requestURL = "https://studev.groept.be/api/a21pt205/count_info/" + getName() + "/";
+        String requestURL = "https://studev.groept.be/api/a21pt205/count_info/" + getName();
+        Log.d("requestURL",requestURL);
         JsonArrayRequest sumitRequest = new JsonArrayRequest(Request.Method.GET, requestURL, null,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -108,7 +110,7 @@ public class Fakbar extends AppCompatActivity {
     }
 
     public void returnBack(){
-        Intent intent = new Intent(context, Fakbars.class);
+        Intent intent = new Intent(context, MainActivity.class);
         startActivity(intent);
     }
 }

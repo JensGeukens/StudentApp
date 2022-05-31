@@ -18,7 +18,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.studentapp.R;
-import com.example.studentapp.fakbar.Fakbars;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,33 +25,36 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class VRG extends AppCompatActivity {
+
+public class activity_Recup extends AppCompatActivity {
     private RequestQueue requestQueue;
     private int progress;
     private String text;
     private String date;
-    public Fakbar VRG;
+    public Fakbar Recup;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vrg);
-        Fakbar VRG = new Fakbar("VRG", this);
+        setContentView(R.layout.activity_fakbar);
+        Recup = new Fakbar("Recup",this);
     }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void onClick(View v){
         switch(v.getId()){
 
             case R.id.btnProgress:
-                int progress = VRG.getProgress();
+                int progress = Recup.getProgress();
                 setViewsProgress(progress);
                 break;
             case R.id.btnEvents:
-                ArrayList<String[]> events= VRG.getEvents();
+                ArrayList<String[]> events= Recup.getEvents();
                 setViewEvents(events);
                 break;
             case R.id.btnReturn:
-                VRG.returnBack();
+                Recup.returnBack();
         }
     }
 
@@ -69,16 +71,18 @@ public class VRG extends AppCompatActivity {
         progressBar.setMax(10);
         progressBar.setProgress(progress);
     }
-
 }
+
+
     /*
     public void onBtReturn(View caller) {
         Intent intent = new Intent(this, Fakbars.class);
         startActivity(intent);
     }
+
     public void getDatabaseData() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String requestURL = "https://studev.groept.be/api/a21pt205/count_info/" + 2 + "/";
+        String requestURL = "https://studev.groept.be/api/a21pt205/count_info/" + 1 + "/";
 
         JsonArrayRequest sumitRequest = new JsonArrayRequest(Request.Method.GET, requestURL, null,
                 new Response.Listener<JSONArray>() {
@@ -89,10 +93,10 @@ public class VRG extends AppCompatActivity {
                             JSONObject curObject = response.getJSONObject(0);
                             progress = curObject.getInt("count");
                             Log.d("rere", String.valueOf(progress));
-                            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar2);
+                            ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar4);
                             progressBar.setMax(10);
                             progressBar.setProgress(progress);
-                        } catch (JSONException e) {
+                    } catch (JSONException e) {
 
                             Log.e("Database", e.getMessage(), e);
                         }
@@ -116,7 +120,7 @@ public class VRG extends AppCompatActivity {
 
     public void getDatabaseEvents() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String requestURL = "https://studev.groept.be/api/a21pt205/get_events/" + 2 + "/";
+        String requestURL = "https://studev.groept.be/api/a21pt205/get_events/" + 1 + "/";
 
         JsonArrayRequest submitRequest = new JsonArrayRequest(Request.Method.GET, requestURL, null,
                 new Response.Listener<JSONArray>() {
@@ -124,13 +128,12 @@ public class VRG extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
                         Log.d("re", String.valueOf(response));
                         try {
-                            TextView event = (TextView) findViewById(R.id.textView2);
+                            TextView event = (TextView) findViewById(R.id.textView);
                             if(response.length() == 0){
                                 event.setText("no events planned");
                             }
 
                             for (int i = 0; i < response.length(); i++) {
-
                                 JSONObject curObject = response.getJSONObject(i);
                                 text = curObject.getString("event");
                                 date = curObject.getString("date");
@@ -162,4 +165,6 @@ public class VRG extends AppCompatActivity {
 
     }
 }
-     */
+*/
+
+

@@ -7,10 +7,8 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.studentapp.MainActivity;
-import com.example.studentapp.fakbar.Politika;
 import com.example.studentapp.QrScanner;
 import com.example.studentapp.R;
-import com.example.studentapp.fakbar.VRG;
 
 public class Fakbars extends AppCompatActivity {
 
@@ -20,19 +18,19 @@ public class Fakbars extends AppCompatActivity {
         setContentView(R.layout.fakbars);
     }
     public void onBtRecup(View caller) {
-        Intent intent = new Intent(this, Recup.class);
+        Intent intent = new Intent(this, activity_Recup.class);
         startActivity(intent);
     }
     public void onBtVrg(View caller) {
-        Intent intent = new Intent(this, VRG.class);
+        Intent intent = new Intent(this, activity_VRG.class);
         startActivity(intent);
     }
     public void onBtDulci (View caller) {
-        Intent intent = new Intent(this, Dulci.class);
+        Intent intent = new Intent(this, activity_Dulci.class);
         startActivity(intent);
     }
     public void onBtPolitika(View caller) {
-        Intent intent = new Intent(this, Politika.class);
+        Intent intent = new Intent(this, activity_Politika.class);
         startActivity(intent);
     }
     public void onBtScan(View caller) {
