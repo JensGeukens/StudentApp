@@ -1,11 +1,13 @@
 package com.example.studentapp.todo;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -22,6 +24,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.stream.Collector;
+import java.util.stream.IntStream;
 
 public class Activity_TodoList extends AppCompatActivity {
 
@@ -37,7 +41,6 @@ public class Activity_TodoList extends AppCompatActivity {
         arraylistTask = new ArrayList<Task>();
 
         addDataToDataBase();
-
     }
 
     public void setViews(){
@@ -63,15 +66,15 @@ public class Activity_TodoList extends AppCompatActivity {
         JsonArrayRequest sumitRequest = new JsonArrayRequest(Request.Method.GET, requestURL,null,
             new Response.Listener<JSONArray>()
                 {
+                    @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onResponse(JSONArray response) {
                         try {
                             for (int i = 0; i < response.length(); i++) {
                                 JSONObject curObject = response.getJSONObject(i);
                                 Log.d("object", String.valueOf(response.getJSONObject(i)));
-                                Task task = new Task(curObject.getString("task"), curObject.getString("Tim"), curObject.getString("dat"));
-                                responseString += curObject.getString("task") + ";" + curObject.getString("Tim") + ";" + curObject.getString("dat");
-
+                                Task task = new Task(curObject.getString("task"), curObject.getString("time"), curObject.getString("date"));
+                                responseString += curObject.getString("task") + ";" + curObject.getString("time") + ";" + curObject.getString("date");
                                 arraylistTask.add(task);
 
                             }

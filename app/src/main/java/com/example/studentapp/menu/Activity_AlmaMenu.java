@@ -33,7 +33,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Activity_AlmaMenu extends AppCompatActivity {
     private TableLayout mTableLayout;
@@ -57,12 +63,13 @@ public class Activity_AlmaMenu extends AppCompatActivity {
         currentDay = getDayOfWeek();
         displayDay();
         getDatabaseData(currentDay);
-
-
     }
 
 
     public void makeTable(JSONArray jsa){
+        Log.d("jsonarray ", String.valueOf(jsa));
+
+
         TableLayout stk = (TableLayout) findViewById(R.id.tableMenu);
         TableRow tbr0 = new TableRow(this);
         stk.removeAllViews();
@@ -204,6 +211,7 @@ public class Activity_AlmaMenu extends AppCompatActivity {
         }
 
     }
+
     public void pressedBtnRechts(View caller){
         if(currentDay<4){
             currentDay+=1;
@@ -211,6 +219,7 @@ public class Activity_AlmaMenu extends AppCompatActivity {
             getDatabaseData(currentDay);
         }
     }
+
     public void pressedBtnReturn(View caller){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -249,4 +258,6 @@ public class Activity_AlmaMenu extends AppCompatActivity {
 
         requestQueue.add(sumitRequest);
     }
+
+
 }
