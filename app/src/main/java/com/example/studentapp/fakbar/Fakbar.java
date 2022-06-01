@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class Fakbar extends AppCompatActivity {
     private String name;
     public ArrayList<String[]> events;
-    private int progress;
+    public int progress;
     private Context context;
     public String date;
     public String text;
