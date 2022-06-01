@@ -43,10 +43,12 @@ public class Activity_TodoList extends AppCompatActivity {
         addDataToDataBase();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void setViews(){
         Log.d("array", String.valueOf(arraylistTask));
 
         ListView mlistView = (ListView) findViewById(R.id.listview);
+
         TaskListAdapter adapter = new TaskListAdapter(this,R.layout.adapter_view_layout,arraylistTask);
         mlistView.setAdapter(adapter);
     }

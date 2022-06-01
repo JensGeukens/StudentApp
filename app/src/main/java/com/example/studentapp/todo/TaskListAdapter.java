@@ -26,6 +26,7 @@ import com.example.studentapp.R;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TaskListAdapter extends ArrayAdapter<Task> {
 

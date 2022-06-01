@@ -29,17 +29,17 @@
             android:name=".todo.Activity_TodoList"
             android:exported="false" />
         <activity
-            android:name=".Dulci"
+            android:name=".fakbar.activity_Dulci"
             android:exported="false" />
         <activity
-            android:name=".Politika"
+            android:name=".fakbar.activity_Politika"
             android:exported="false" />
 
         <activity
-            android:name=".fakbar.Recup"
+            android:name=".fakbar.activity_Recup"
             android:exported="false" />
         <activity
-            android:name=".VRG"
+            android:name=".fakbar.activity_VRG"
             android:exported="false" />
         <activity
             android:name=".Login"
