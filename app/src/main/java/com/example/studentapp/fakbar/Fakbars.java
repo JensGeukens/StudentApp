@@ -33,6 +33,7 @@ public class Fakbars extends AppCompatActivity {
         Intent intent = new Intent(this, activity_Politika.class);
         startActivity(intent);
     }
+
     public void onBtScan(View caller) {
         Intent intent = new Intent(this, QrScanner.class);
         startActivity(intent);
