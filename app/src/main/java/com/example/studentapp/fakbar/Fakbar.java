@@ -27,6 +27,8 @@ public class Fakbar extends AppCompatActivity {
     private Context context;
     public String date;
     public String text;
+    boolean gotData = false;
+
 
     public Fakbar(String name, Context context) {
         this.name = name;
@@ -34,6 +36,7 @@ public class Fakbar extends AppCompatActivity {
         this.progress = 0;
         this.context = context;
         events = new ArrayList<>();
+
     }
 
     public String getName() {
@@ -81,6 +84,7 @@ public class Fakbar extends AppCompatActivity {
     }
 
     public int getProgress() {
+        gotData = false;
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         String requestURL = "https://studev.groept.be/api/a21pt205/count_info/" + getName();
         Log.d("requestURL",requestURL);
@@ -91,7 +95,9 @@ public class Fakbar extends AppCompatActivity {
                         Log.d("re",String.valueOf(response));
                         try {
                             JSONObject curObject = response.getJSONObject(0);
+                            gotData = true;
                             progress = curObject.getInt("count");
+
                         } catch (JSONException e) {
 
                             Log.e("Database", e.getMessage(), e);
@@ -106,7 +112,8 @@ public class Fakbar extends AppCompatActivity {
                 }
         );
         requestQueue.add(sumitRequest);
-    return progress;
+
+        return progress;
     }
 
     public void returnBack(){
@@ -134,6 +141,8 @@ public class Fakbar extends AppCompatActivity {
         );
         requestQueue.add(sumitRequest);
     }
+
+
 
 
 }

@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ import com.example.studentapp.R;
 import com.example.studentapp.fakbar.Fakbar;
 import com.example.studentapp.fakbar.Fakbars;
 import com.example.studentapp.todo.Activity_TodoList;
+import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -41,22 +43,30 @@ public class activity_Dulci extends AppCompatActivity  {
         Dulci = new Fakbar("Dulci",this);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    public void onClick(View v){
-        switch(v.getId()){
-
-            case R.id.btnProgress:
-                int progress = Dulci.getProgress();
-                setViewsProgress(progress);
-                break;
-            case R.id.btnEvents:
-                ArrayList<String[]> events= Dulci.getEvents();
-                setViewEvents(events);
-                break;
-            case R.id.btnReturn:
-                Dulci.returnBack();
-        }
+    public void pressedProgressBtn(View v) {
+        int progress = Dulci.getProgress();
+        setViewsProgress(progress);
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void pressedEventsBtn(View v){
+        ArrayList<String[]> events= Dulci.getEvents();
+        setViewEvents(events);
+    }
+
+    public void pressedReturnBtn(View v){
+        Dulci.returnBack();
+    }
+
+    public void btnGotDrink(View v){
+        Dulci.setProgressNull();
+
+        Button setTOZerobtn = (Button) findViewById(R.id.btnGotDrink);
+        setTOZerobtn.setVisibility(View.INVISIBLE);
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar4);
+        progressBar.setProgress(0);
+    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void setViewEvents(ArrayList<String[]> events) {
@@ -73,6 +83,8 @@ public class activity_Dulci extends AppCompatActivity  {
         if (progress==10){
             Snackbar timeSnackbar = Snackbar.make(findViewById(R.id.ducli_view), "Get your free drink at the bar!!", BaseTransientBottomBar.LENGTH_LONG);
             timeSnackbar.show();
+            Button setTOZerobtn = (Button) findViewById(R.id.btnGotDrink);
+            setTOZerobtn.setVisibility(View.VISIBLE);
 
         }
     }
