@@ -11,13 +11,12 @@
         <entry key="..\:/Users/jensg/AndroidStudioProjects/StudentApp/app/src/main/res/layout/fakbars.xml" value="0.2" />
         <entry key="..\:/Users/jensg/AndroidStudioProjects/StudentApp/app/src/main/res/layout/login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/jensg/AndroidStudioProjects/StudentApp/app/src/main/res/layout/politika.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/jensg/AndroidStudioProjects/StudentApp/app/src/main/res/layout/qrscanner.xml" value="0.1" />
+        <entry key="..\:/Users/jensg/AndroidStudioProjects/StudentApp/app/src/main/res/layout/qrscanner.xml" value="0.264" />
         <entry key="..\:/Users/jensg/AndroidStudioProjects/StudentApp/app/src/main/res/layout/vrg.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/drawable/ic_close.xml" value="0.1" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/drawable/round_grey.xml" value="0.1" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/drawable/round_primary.xml" value="0.1655" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/ToDO.xml" value="0.25" />
-        <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_Recup.xml" value="0.2" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_add_task.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_add_tasks.xml" value="0.1" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_alma_menu.xml" value="0.11865942028985507" />
@@ -29,15 +28,9 @@
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_toDo.xml" value="0.1693840579710145" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/activity_todo.xml" value="0.11820652173913043" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/adapter_view_layout.xml" value="0.2" />
-        <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/dulci.xml" value="0.2" />
-        <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/fakbars.xml" value="0.2" />
-        <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/login.xml" value="0.2" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/new_add_task.xml" value="0.2" />
-        <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/politika.xml" value="0.1" />
-        <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/qrscanner.xml" value="0.2" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/row_add_task.xml" value="0.25" />
         <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/row_task.xml" value="0.1693840579710145" />
-        <entry key="..\:/Users/stijn/AndroidStudioProjects/StudentApp/app/src/main/res/layout/vrg.xml" value="0.2" />
       </map>
     </option>
   </component>

@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -40,7 +41,6 @@ public class activity_VRG extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void onClick(View v){
         switch(v.getId()){
-
             case R.id.btnProgress:
                 int progress = VRG.getProgress();
                 setViewsProgress(progress);
@@ -51,6 +51,13 @@ public class activity_VRG extends AppCompatActivity {
                 break;
             case R.id.btnReturn:
                 VRG.returnBack();
+                break;
+            case R.id.btnGotDrink:
+                VRG.setProgressNull();
+                Button setTOZerobtn = (Button) findViewById(R.id.btnGotDrink);
+                setTOZerobtn.setVisibility(View.INVISIBLE);
+                ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar4);
+                progressBar.setProgress(0);
         }
     }
 
@@ -67,9 +74,10 @@ public class activity_VRG extends AppCompatActivity {
         progressBar.setMax(10);
         progressBar.setProgress(progress);
         if (progress==10){
-            Snackbar timeSnackbar = Snackbar.make(findViewById(R.id.VRG_view), "Get your free drink at the bar!!", BaseTransientBottomBar.LENGTH_LONG);
+            Snackbar timeSnackbar = Snackbar.make(findViewById(R.id.ducli_view), "Get your free drink at the bar!!", BaseTransientBottomBar.LENGTH_LONG);
             timeSnackbar.show();
-
+            Button setTOZerobtn = (Button) findViewById(R.id.btnGotDrink);
+            setTOZerobtn.setVisibility(View.VISIBLE);
         }
     }
 

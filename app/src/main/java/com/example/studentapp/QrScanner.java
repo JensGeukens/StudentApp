@@ -51,6 +51,7 @@ public class QrScanner extends AppCompatActivity {
     {
         if(result.getContents() != null)
         {
+
             Uri uri = Uri.parse(result.getContents());
             startActivity(new Intent(Intent.ACTION_VIEW, uri));
 
