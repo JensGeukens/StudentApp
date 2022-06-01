@@ -114,5 +114,26 @@ public class Fakbar extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void setProgressNull(){
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        String requestURL = "https://studev.groept.be/api/a21pt205/setCountToZero/" + getName();
+        Log.d("requestURL",requestURL);
+        JsonArrayRequest sumitRequest = new JsonArrayRequest(Request.Method.GET, requestURL, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d("counter","back to zero");
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError e) {
+                        Log.e("database", e.getMessage(), e);
+                    }
+                }
+        );
+        requestQueue.add(sumitRequest);
+    }
+
 
 }

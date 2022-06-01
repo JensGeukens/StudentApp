@@ -18,6 +18,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.studentapp.R;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,10 +29,6 @@ import java.util.ArrayList;
 
 
 public class activity_Recup extends AppCompatActivity {
-    private RequestQueue requestQueue;
-    private int progress;
-    private String text;
-    private String date;
     public Fakbar Recup;
 
 
@@ -70,6 +68,11 @@ public class activity_Recup extends AppCompatActivity {
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setMax(10);
         progressBar.setProgress(progress);
+        if (progress==10){
+            Snackbar timeSnackbar = Snackbar.make(findViewById(R.id.Recup_view), "Get your free drink at the bar!!", BaseTransientBottomBar.LENGTH_LONG);
+            timeSnackbar.show();
+
+        }
     }
 }
 

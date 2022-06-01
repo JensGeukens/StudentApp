@@ -70,6 +70,11 @@ public class activity_Dulci extends AppCompatActivity  {
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar4);
         progressBar.setMax(10);
         progressBar.setProgress(progress);
+        if (progress==10){
+            Snackbar timeSnackbar = Snackbar.make(findViewById(R.id.ducli_view), "Get your free drink at the bar!!", BaseTransientBottomBar.LENGTH_LONG);
+            timeSnackbar.show();
+
+        }
     }
 
     /*
